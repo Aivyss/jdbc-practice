@@ -29,7 +29,7 @@ class DataSourceConfig {
 
     /**
      * DriverManager.getConnection(url, username, password)
-     * java.sql은 DataSource의 추상화에 위반하기 때문에 스프링에서 제공하는 것을 쓴다.
+     * javax.sql의 DriverManager는 DataSource 추상화에 위반하기 때문에 스프링에서 제공하는 것을 쓴다.
      */
     @Bean("hikariDS")
     fun hikariPoolDataSource(): DataSource {
