@@ -63,12 +63,4 @@ class MemberRepositoryV1Test {
         // * then
         Assertions.assertThat(memberRepository.findById(memberId)).isNull()
     }
-
-    @Test
-    fun manyRepeatCloseTest() {
-        memberRepository.removeAll()
-
-
-        memberRepository.manyRepeatClose()
-    }
 }

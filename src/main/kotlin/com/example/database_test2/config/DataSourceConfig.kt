@@ -38,6 +38,7 @@ class DataSourceConfig {
             password = property.password
             maximumPoolSize = 10
             poolName = "[Hikari Connection Pool]"
+            connectionTimeout = 3000
         }
     }
 }

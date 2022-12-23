@@ -78,13 +78,4 @@ class MemberRepositoryV1 (
             datasourceConnection.close(pstmt, conn, rs)
         }
     }
-
-    fun manyRepeatClose() {
-        for (i: Int in 0 until  1500) {
-            val conn = datasourceConnection.getConnection()
-            val pstmt = conn.prepareStatement("select * from member")
-
-            datasourceConnection.close(pstmt, conn)
-        }
-    }
 }
