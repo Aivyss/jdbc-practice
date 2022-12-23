@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 import java.sql.Connection
 import javax.sql.DataSource
 
-@Component("hikari")
+@Component("hikariDC")
 class HikariPoolDatasourceConnection(
     @Qualifier("hikariDS") private val ds: DataSource
 ) : DataSourceConnection {
