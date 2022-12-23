@@ -2,7 +2,7 @@ package com.example.database_test2.connection
 
 import java.sql.Connection
 
-interface ConnectionManager {
-    fun setConnection(conn: Connection)
+interface ConnectionManager{
     fun getConnection(): Connection
+    fun close()
 }

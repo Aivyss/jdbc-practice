@@ -12,11 +12,16 @@ class HikariPoolConnectionManager(
     @Qualifier("hikariDC") private val dataSourceConnection: DataSourceConnection,
     private val connectionContext: ConnectionContext,
 ) : ConnectionManager {
-    override fun setConnection(conn: Connection) {
-        connectionContext.setConnection(conn)
+
+    init {
+        connectionContext.setConnection(dataSourceConnection.getConnection())
     }
 
     override fun getConnection(): Connection {
         return connectionContext.getConnection()
+    }
+
+    override fun close() {
+        connectionContext.getConnection().close()
     }
 }
