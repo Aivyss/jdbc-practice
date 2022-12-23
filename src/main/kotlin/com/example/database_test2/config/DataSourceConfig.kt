@@ -18,12 +18,10 @@ class DataSourceConfig {
 
     @Bean("driverManagerDS")
     fun driverManagerDataSource(): DataSource {
-        return HikariDataSource().apply {
-            jdbcUrl = property.url
+        return DriverManagerDataSource().apply {
+            url = property.url
             username = property.username
             password = property.password
-            maximumPoolSize = 10
-            poolName = "[Hikari Connection Pool]"
         }
     }
 
@@ -33,10 +31,13 @@ class DataSourceConfig {
      */
     @Bean("hikariDS")
     fun hikariPoolDataSource(): DataSource {
-        return DriverManagerDataSource().apply {
-            url = property.url
+        return HikariDataSource().apply {
+            jdbcUrl = property.url
             username = property.username
             password = property.password
+            maximumPoolSize = 10
+            poolName = "[Hikari Connection Pool]"
         }
+
     }
 }
