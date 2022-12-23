@@ -16,6 +16,10 @@ class DataSourceProperty {
 class DataSourceConfig {
     val property: DataSourceProperty = DataSourceProperty()
 
+    /**
+     * DriverManager.getConnection(url, username, password)
+     * javax.sql의 DriverManager는 DataSource 추상화에 위반하기 때문에 스프링에서 제공하는 것을 쓴다.
+     */
     @Bean("driverManagerDS")
     fun driverManagerDataSource(): DataSource {
         return DriverManagerDataSource().apply {
@@ -25,10 +29,7 @@ class DataSourceConfig {
         }
     }
 
-    /**
-     * DriverManager.getConnection(url, username, password)
-     * javax.sql의 DriverManager는 DataSource 추상화에 위반하기 때문에 스프링에서 제공하는 것을 쓴다.
-     */
+
     @Bean("hikariDS")
     fun hikariPoolDataSource(): DataSource {
         return HikariDataSource().apply {
@@ -38,6 +39,5 @@ class DataSourceConfig {
             maximumPoolSize = 10
             poolName = "[Hikari Connection Pool]"
         }
-
     }
 }
